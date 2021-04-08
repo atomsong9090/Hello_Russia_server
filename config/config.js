@@ -1,11 +1,12 @@
 require("dotenv").config();
 
 const development = {
-  username: "root",
+  username: process.env.database_admin,
   password: process.env.database_password,
-  database: "database_development",
-  host: "127.0.0.1",
+  database: "test",
+  host: process.env.database_host,
   dialect: "mysql",
+  port: process.env.database_port,
 };
 
 const test = {

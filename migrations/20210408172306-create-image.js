@@ -1,38 +1,33 @@
 "use strict";
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("Englishes", {
+    await queryInterface.createTable("images", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      word: {
-        type: Sequelize.STRING,
+      contentId: {
+        type: Sequelize.INTEGER,
       },
-      meaning: {
-        type: Sequelize.STRING,
+      userId: {
+        type: Sequelize.INTEGER,
       },
-      sameword1: {
-        type: Sequelize.STRING,
-      },
-      sameword2: {
+      url: {
         type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP(3)"),
       },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)"),
       },
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("Englishes");
+    await queryInterface.dropTable("images");
   },
 };
