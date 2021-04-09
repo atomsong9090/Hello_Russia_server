@@ -8,6 +8,7 @@ module.exports = {
 
     const contents = await content.findAndCountAll({
       include: [{ model: like, where: { userId: userId } }, { model: user }],
+      order: ["createdAt"],
     });
 
     res.send(contents);

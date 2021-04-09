@@ -13,6 +13,7 @@ module.exports = {
         },
       ],
       where: { category: category },
+      order: ["createdAt"],
     });
     if (contents.rows.length > 0) {
       return res.status(200).send({

@@ -6,6 +6,7 @@ module.exports = {
     const comments = await comment.findAndCountAll({
       include: [{ model: user, attributes: ["nickname"] }],
       where: { contentId: contentId },
+      order: ["createdAt"],
     });
     if (comments.count > 0) {
       return res.status(200).send(comments);

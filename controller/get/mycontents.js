@@ -9,6 +9,7 @@ module.exports = {
     const mycontents = await content.findAndCountAll({
       include: [{ model: user, attribute: ["nickname"] }, { model: like }, { model: image }],
       where: { userId: userId },
+      order: ["createdAt"],
     });
     if (mycontents.count > 0) {
       return res.status(200).send({ data: mycontents, message: "ok" });
