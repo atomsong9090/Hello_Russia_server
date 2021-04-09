@@ -31,7 +31,7 @@ app.post("/comment", postApi.comment.post);
 app.get("/contents", getApi.contents.get);
 app.get("/comments", getApi.comments.get);
 app.get("/likescontents", getApi.likescontents.get);
-app.get("/mycontent", getApi.mycontent.get);
+app.get("/mycontents", getApi.mycontents.get);
 
 app.listen(app.get("port"), () => {
   console.log(app.get("port"), "번 포트에서 대기중");
