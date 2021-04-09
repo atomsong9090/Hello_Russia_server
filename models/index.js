@@ -30,7 +30,7 @@ Object.keys(db).forEach((modelName) => {
   }
 });
 
-const { user, like, content, comment, image } = sequelize.models;
+const { user, like, content, comment, image, follow } = sequelize.models;
 user.hasMany(content, { foreignKey: "userId", sourceKey: "id" });
 content.belongsTo(user, { foreignKey: "userId", targetKey: "id" });
 user.hasMany(comment, { foreignKey: "userId", sourceKey: "id" });
@@ -47,6 +47,8 @@ user.hasMany(image, { foreignKey: "userId", sourceKey: "id" });
 image.belongsTo(user, { foreignKey: "userId", targetKey: "id" });
 content.hasMany(image, { foreignKey: "contentId", sourceKey: "id" });
 image.belongsTo(content, { foreignKey: "contentId", targetKey: "id" });
+user.hasMany(follow, { foreignKey: "userId", sourceKey: "id" });
+follow.belongsTo(user, { foreignKey: "userId", targetKey: "id" });
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
