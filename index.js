@@ -29,6 +29,9 @@ app.post("/signout", postApi.signout.post);
 app.post("/content", postApi.content.post);
 app.post("/comment", postApi.comment.post);
 app.get("/contents", getApi.contents.get);
+app.get("/comments", getApi.comments.get);
+app.get("/likescontents", getApi.likescontents.get);
+app.get("/mycontent", getApi.mycontent.get);
 
 app.listen(app.get("port"), () => {
   console.log(app.get("port"), "번 포트에서 대기중");

@@ -1,6 +1,6 @@
 module.exports = {
-  mycontent: require("./mycontent"),
+  mycontents: require("./mycontents"),
   contents: require("./contents"),
   likescontents: require("./likescontents"),
-  comment: require("./comment"),
+  comments: require("./comment"),
 };

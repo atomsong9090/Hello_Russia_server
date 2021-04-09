@@ -14,10 +14,14 @@ module.exports = {
       ],
       where: { category: category },
     });
-
-    res.status(200).send({
-      data: contents.rows,
-      message: "ok",
-    });
+    if (contents.rows.length > 0) {
+      return res.status(200).send({
+        data: contents.rows,
+        message: "ok",
+      });
+    } else if (contents.rows.length === 0) {
+      return res.status(400).send("cannot find contents");
+    }
+    return res.status(500).send("err");
   },
 };
