@@ -8,7 +8,6 @@ module.exports = {
     if (!accessTokenData) {
       refreshToken(req, res);
     } else {
-      console.log(accessTokenData);
       await content
         .create({
           title: title,
@@ -23,7 +22,5 @@ module.exports = {
           res.status(500).send("err");
         });
     }
-
-    return res.send("content");
   },
 };
