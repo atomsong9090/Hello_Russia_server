@@ -1,10 +1,10 @@
-const { user, comment } = require("../../models");
+const { user, comment, like } = require("../../models");
 
 module.exports = {
   get: async (req, res) => {
     const { contentId } = req.query;
     const comments = await comment.findAndCountAll({
-      include: [{ model: user, attributes: ["nickname", "country", "avatarUrl"] }],
+      include: [{ model: user, attributes: ["nickname", "country", "avatarUrl"] }, { model: like }],
       where: { contentId: contentId },
       order: ["createdAt"],
     });
