@@ -3,7 +3,7 @@ const { isAuthorized } = require("../tokenFunctions");
 
 module.exports = {
   post: async (req, res) => {
-    const { category, text, title } = req.body;
+    const { category, text, title, imgUrls } = req.body;
     const accessTokenData = isAuthorized(req);
     if (!accessTokenData) {
       refreshToken(req, res);
@@ -14,6 +14,7 @@ module.exports = {
           text: text,
           category: category,
           userId: accessTokenData.id,
+          imgUrls: imgUrls,
         })
         .then((data) => {
           return res.status(201).send({ data: data, message: "created new content successfully" });
