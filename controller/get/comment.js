@@ -2,9 +2,9 @@ const { user, comment } = require("../../models");
 
 module.exports = {
   get: async (req, res) => {
-    const { contentId } = req.body;
+    const { contentId } = req.query;
     const comments = await comment.findAndCountAll({
-      include: [{ model: user, attributes: ["nickname"] }],
+      include: [{ model: user, attributes: ["nickname", "country", "avatarUrl"] }],
       where: { contentId: contentId },
       order: ["createdAt"],
     });

@@ -1,4 +1,4 @@
-const { content, like, image } = require("../../models");
+const { content, like, image, user } = require("../../models");
 
 module.exports = {
   get: async (req, res) => {
@@ -12,6 +12,10 @@ module.exports = {
           },
           {
             model: image,
+          },
+          {
+            model: user,
+            attributes: ["nickname", "country", "avatarUrl"],
           },
         ],
         where: { category: category },
