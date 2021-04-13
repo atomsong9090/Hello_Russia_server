@@ -1,21 +1,44 @@
-const { user, content, like, image } = require("../../models");
 const { isAuthorized } = require("../tokenFunctions");
+const { content, like, image, user, comment } = require("../../models");
 
 module.exports = {
   get: async (req, res) => {
     const accessTokenData = isAuthorized(req);
-    const userId = accessTokenData.id;
 
-    const mycontents = await content.findAndCountAll({
-      include: [{ model: user, attribute: ["nickname"] }, { model: like }, { model: image }],
-      where: { userId: userId },
-      order: ["createdAt"],
-    });
-    if (mycontents.count > 0) {
-      return res.status(200).send({ data: mycontents, message: "ok" });
-    } else if (mycontents.count === 0) {
-      return res.status(400).send("cannot find user's contents");
+    const contents = await content
+      .findAndCountAll({
+        include: [
+          {
+            model: user,
+            attributes: ["id", "nickname", "country", "avatarUrl"],
+          },
+          {
+            model: like,
+          },
+          {
+            model: image,
+          },
+
+          {
+            model: comment,
+          },
+        ],
+        where: { userid: accessTokenData.id },
+        order: ["createdAt"],
+      })
+      .catch((err) => {
+        return res.send("err");
+      });
+
+    if (contents.rows.length > 0) {
+      return res.status(200).send({
+        data: contents.rows,
+        message: "ok",
+      });
+    } else if (contents.rows.length === 0) {
+      return res.status(400).send("cannot find contents");
     }
+
     return res.status(500).send("err");
   },
 };
