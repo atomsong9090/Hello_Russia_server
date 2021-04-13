@@ -15,7 +15,7 @@ module.exports = {
           },
           {
             model: user,
-            attributes: ["nickname", "country", "avatarUrl"],
+            attributes: ["id", "nickname", "country", "avatarUrl"],
           },
           {
             model: comment,
