@@ -65,6 +65,7 @@ app.get("/comments", getApi.comments.get);
 app.get("/likescontents", getApi.likescontents.get);
 app.get("/mycontents", getApi.mycontents.get);
 app.delete("/dcontent", deleteApi.dcontent.delete);
+app.delete("/dcomment", deleteApi.dcomment.delete);
 
 app.listen(app.get("port"), () => {
   console.log(app.get("port"), "번 포트에서 대기중");
