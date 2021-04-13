@@ -22,7 +22,7 @@ module.exports = {
       const accessToken = generateAccessToken(userInfo.dataValues);
       const refreshToken = generateRefreshToken(userInfo.dataValues);
       sendRefreshToken(res, refreshToken);
-      sendAccessToken(res, accessToken, userInfo.dataValues.nickname, userInfo.dataValues.id);
+      sendAccessToken(res, accessToken, userInfo.dataValues);
     } else {
       return res.status(500).send("err");
     }

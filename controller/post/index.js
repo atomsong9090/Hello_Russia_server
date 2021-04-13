@@ -4,4 +4,5 @@ module.exports = {
   signout: require("./signout"),
   comment: require("./comment"),
   content: require("./content"),
+  likes: require("./likes"),
 };
