@@ -24,7 +24,7 @@ module.exports = {
           return res.status(409).send("email already exists");
         }
         const accessToken = generateAccessToken(user.dataValues);
-        sendAccessToken(res, accessToken);
+        sendAccessToken(res, accessToken, user.dataValues.nickname, user.dataValues.id);
       })
       .catch((err) => {
         res.status(500).send("err");

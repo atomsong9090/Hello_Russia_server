@@ -21,9 +21,8 @@ module.exports = {
       delete userInfo.dataValues.password;
       const accessToken = generateAccessToken(userInfo.dataValues);
       const refreshToken = generateRefreshToken(userInfo.dataValues);
-
       sendRefreshToken(res, refreshToken);
-      sendAccessToken(res, accessToken, userInfo.dataValues.nickname);
+      sendAccessToken(res, accessToken, userInfo.dataValues.nickname, userInfo.dataValues.id);
     } else {
       return res.status(500).send("err");
     }

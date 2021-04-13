@@ -13,8 +13,8 @@ module.exports = {
       httpOnly: true,
     });
   },
-  sendAccessToken: (res, accessToken, nickname) => {
-    res.status(200).json({ data: { accessToken: accessToken, nickname: nickname }, message: "ok" });
+  sendAccessToken: (res, accessToken, nickname, id) => {
+    res.status(200).json({ data: { accessToken: accessToken, nickname: nickname, id: id }, message: "ok" });
   },
   resendAccessToken: (res, accessToken, data) => {
     res.status(201).json({
