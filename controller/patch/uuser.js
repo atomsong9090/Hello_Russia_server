@@ -23,11 +23,13 @@ module.exports = {
         .update(
           { password: newEncrypted },
           {
-            where: { password: encrypted },
+            where: { password: encrypted, id: accessTokenData.id },
           }
         )
-        .catch((err) => {
-          return res.status(400).send(err);
+        .then((data) => {
+          if (data[0] === 0) {
+            return res.status(404).send("wrong password");
+          }
         });
     }
 
