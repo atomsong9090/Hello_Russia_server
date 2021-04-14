@@ -3,4 +3,5 @@ module.exports = {
   contents: require("./contents"),
   likescontents: require("./likescontents"),
   comments: require("./comment"),
+  user: require("./user"),
 };

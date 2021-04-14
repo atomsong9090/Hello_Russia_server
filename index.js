@@ -13,6 +13,7 @@ const sequelize = require("./models").sequelize;
 const postApi = require("./controller/post");
 const getApi = require("./controller/get");
 const deleteApi = require("./controller/delete");
+const patchApi = require("./controller/patch");
 
 AWS.config.update({
   accessKeyId: process.env.S3_ACCESS_KEY_ID,
@@ -64,8 +65,10 @@ app.get("/contents", getApi.contents.get);
 app.get("/comments", getApi.comments.get);
 app.get("/likescontents", getApi.likescontents.get);
 app.get("/mycontents", getApi.mycontents.get);
+app.get("/user", getApi.user.get);
 app.delete("/dcontent", deleteApi.dcontent.delete);
 app.delete("/dcomment", deleteApi.dcomment.delete);
+app.patch("/uuser", patchApi.uuser.patch);
 
 app.listen(app.get("port"), () => {
   console.log(app.get("port"), "번 포트에서 대기중");
