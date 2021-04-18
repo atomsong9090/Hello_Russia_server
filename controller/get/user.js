@@ -13,6 +13,7 @@ module.exports = {
     if (!userInfo) {
       res.status(400).send("not authorized");
     } else if (userInfo) {
+      delete useInfo.dataValues.password;
       res.status(200).send({ message: "ok", data: userInfo.dataValues });
     } else {
       return res.status(500).send("err");
